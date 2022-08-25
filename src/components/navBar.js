@@ -21,10 +21,10 @@ const NavBar = () => {
                     </li>
                     <li><a href="pages/contacto.html">Contactanos</a></li>
                     <li class="nav-item">
-                        <button type="button" className="btn">Inicie Sesión</button>                                               
+                        <button type="button" className="botones">Inicie Sesión</button>                                               
                         </li>
                     <li class="nav-item">
-                        <button type="button" className="btn">Carrito</button> 
+                        <button type="button" className="botones">Carrito</button> 
                     </li>  
                 </ul>
             </nav>
