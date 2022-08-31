@@ -1,15 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/navBar.js'
+import ItemListContainer from './components/Greeting/Greeting'
 
 function App() {
   return (
     <div className="App">
       <NavBar/>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <ItemListContainer Saludo="Bienvenidos a la Tienda Virtual" />
         <p>
-          Presentación Trabajo Clase 3
+          Presentación Trabajo Clase 4
         </p>
 
       </header>

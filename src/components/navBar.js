@@ -1,4 +1,6 @@
-import Logo_Puga from '../Logo_Puga.png';
+import Logo_Puga from '../img/Logo_Puga.png';
+import CartWidget from './CartWidget/CartWidget';
+
 const NavBar = () => {
     return (
         <div>
@@ -19,12 +21,12 @@ const NavBar = () => {
                             <li><a href="#">Marroquinería</a></li>
                         </ul>
                     </li>
-                    <li><a href="pages/contacto.html">Contactanos</a></li>
+                    <li><a href="#">Contactanos</a></li>
                     <li class="nav-item">
                         <button type="button" className="botones">Inicie Sesión</button>                                               
                         </li>
                     <li class="nav-item">
-                        <button type="button" className="botones">Carrito</button> 
+                        <button type="button" className="botones">Carrito <CartWidget /> <span>4</span>  </button> 
                     </li>  
                 </ul>
             </nav>
