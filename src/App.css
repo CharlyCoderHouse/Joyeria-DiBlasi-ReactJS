@@ -150,19 +150,36 @@ li {
 }
 
 .card {
+  margin: 45px 45px 45px 45px;
+}  
+.card1 {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 10px 10px 10px;
-  padding-bottom: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: max-available;
+  margin: 45px;
+  border: 1px solid #CE7D35;
+  border-radius: 4px;
+  box-shadow: 3px 3px 10px #CE7D35; }
+
+.textoTil {
+  font-size: 16px;
+  padding: 5px;
 }
 
-.texto {
-  padding: 40px;
-}
-
-.texto1 {
+.textoDesc {
+  font-size: 12px;
   padding: 5px;
   margin: 5px;
+}
+
+.textoPrec {
+  font-size: 14px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.btn-warning {
+  margin: 10px;
 }

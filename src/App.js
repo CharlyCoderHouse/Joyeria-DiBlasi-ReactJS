@@ -1,16 +1,16 @@
 import './App.css';
-import NavBar from './components/navBar.js'
-import ItemListContainer from './components/Greeting/Greeting'
+import NavBar from './components/navBar.js';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 function App() {
-  const stock = 10
+  
   return (
     <div className="App">
       <NavBar/>
       <header className="App-header">
-        <ItemListContainer Saludo="Bienvenidos a la Tienda Virtual" stock={stock}/>
+        <ItemListContainer Saludo="Bienvenidos a la Tienda Virtual" />
         <p className='texto'>
-          Presentación Trabajo Clase 5
+          Presentación Trabajo Clase 6
         </p>
 
       </header>

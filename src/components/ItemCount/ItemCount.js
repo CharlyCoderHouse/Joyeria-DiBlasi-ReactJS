@@ -1,4 +1,6 @@
-import { useState } from 'react';
+//Se descontinua este componente al trabajarlo desde Item
+
+/* import { useState } from 'react';
 
 const ItemCount = ({stock}) => {
     
@@ -22,4 +24,4 @@ const ItemCount = ({stock}) => {
     )
 }
 
-export default ItemCount
+export default ItemCount */

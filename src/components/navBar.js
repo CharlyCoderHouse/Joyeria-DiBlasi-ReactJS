@@ -4,28 +4,28 @@ import CartWidget from './CartWidget/CartWidget';
 const NavBar = () => {
     return (
         <div>
-            <a href="#" >
+            <a href="./index.html" >
                 <img src={Logo_Puga} className="imgLogo" alt="Joyeria_Puga" width="140" height="100"/>
             </a>
-            <h1 class="titulos">Proyecto Tienda Joyería PUGA</h1>
-            <nav class="menuNav">
-                <ul class="menuPrincipal">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Quienes Somos</a></li>
-                    <li><a href="#">Promociones</a></li>
-                    <li><a href="#">Productos</a>
-                        <ul class="subMenuPrincipal">
-                            <li><a href="#">Anillos</a></li>
-                            <li><a href="#">Relojes</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                            <li><a href="#">Marroquinería</a></li>
+            <h1 className='titulos'>Proyecto Tienda Joyería PUGA</h1>
+            <nav className="menuNav">
+                <ul className="menuPrincipal">
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./index.html">Quienes Somos</a></li>
+                    <li><a href="./index.html">Promociones</a></li>
+                    <li><a href="./index.html">Productos</a>
+                        <ul className="subMenuPrincipal">
+                            <li><a href="./index.html">Anillos</a></li>
+                            <li><a href="./index.html">Relojes</a></li>
+                            <li><a href="./index.html">Accesorios</a></li>
+                            <li><a href="./index.html">Marroquinería</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Contactanos</a></li>
-                    <li class="nav-item">
+                    <li><a href="./index.html">Contactanos</a></li>
+                    <li className="nav-item">
                         <button type="button" className="botones">Inicie Sesión</button>                                               
                         </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <button type="button" className="botones">Carrito <CartWidget /> <span>4</span>  </button> 
                     </li>  
                 </ul>
