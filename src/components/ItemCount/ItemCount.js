@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const ItemCount = ({ stock }) => {
-  const [initialItem, setInitialItem] = useState(1);
+const ItemCount = ({ stock, initial, onAdd }) => {
+  const [initialItem, setInitialItem] = useState(initial);
 
   const sumar = () => {
     initialItem < stock
@@ -15,6 +15,10 @@ const ItemCount = ({ stock }) => {
       : alert("No se pueden introducir valores negativos");
   };
 
+  const handleOnAdd = () => {
+    if (initialItem <= stock) onAdd(initialItem);
+  };
+
   return (
     <div className="spinner">
       <button onClick={restar} className="botonera">
@@ -24,7 +28,7 @@ const ItemCount = ({ stock }) => {
       <button onClick={sumar} className="botonera">
         +
       </button>
-      <button className="btn-warning">Agregar a la Compra</button>
+      <button onClick={handleOnAdd}>Agregar al carrito</button>
     </div>
   );
 };
