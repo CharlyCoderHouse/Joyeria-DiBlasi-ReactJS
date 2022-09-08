@@ -152,6 +152,11 @@ li {
 .card {
   margin: 45px 45px 45px 45px;
 }  
+
+.card-body {
+  background: blanchedalmond;
+}  
+
 .card1 {
   display: flex;
   flex-direction: row;

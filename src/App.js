@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './components/navBar.js';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
   
@@ -8,9 +8,11 @@ function App() {
     <div className="App">
       <NavBar/>
       <header className="App-header">
-        <ItemListContainer Saludo="Bienvenidos a la Tienda Virtual" />
+        <ItemDetailContainer Saludo="Bienvenidos a la Tienda Virtual" />
+        {/* Comento el ItemListConteiner del Trabajo 6 para reusarlo para el 7 con el detalle de un producto */}
+        {/* <ItemListContainer Saludo="Bienvenidos a la Tienda Virtual" /> */}
         <p className='texto'>
-          Presentación Trabajo Clase 6
+          Presentación Trabajo Clase 7
         </p>
 
       </header>
