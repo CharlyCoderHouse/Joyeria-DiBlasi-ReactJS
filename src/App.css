@@ -146,6 +146,7 @@ li {
 
 .spinner{
   display: inline-flex;
+  align-items: center;
   padding: 5px;
 }
 
