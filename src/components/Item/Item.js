@@ -10,9 +10,9 @@ const Item = ({ data }) => {
         <Card.Title className='textoTil'>{data.nombre}</Card.Title>
         <Card.Text className='textoDesc'>{data.desc}</Card.Text>
         <Card.Text className='textoDesc'>
-          {`Stock disponible ${data.stock}`} 
+          {`Stock disponible: ${data.stock}`} 
         </Card.Text>
-        <Card.Text>Precio: ${data.precio}</Card.Text>
+        <Card.Text className='textoTil'>{`Precio: $ ${data.precio}.-`}</Card.Text>
       </Card.Body>
       </Card>
     </>

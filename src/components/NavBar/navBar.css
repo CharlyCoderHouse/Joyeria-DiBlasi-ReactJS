@@ -1,0 +1,97 @@
+/* Logo de la empresa Arriba a la izquierda */
+
+.imgLogo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.menuNav {
+    text-align: center;
+    width: auto;
+    margin: 30px auto;
+    /* background: blanchedalmond; */
+}
+
+ul {
+    list-style-type: none;
+    font-size: 0;
+}
+
+li {
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.menuNav ul {
+    list-style-type: none;
+}
+
+.menuPrincipal li {
+    display: inline-block;
+}
+
+.menuPrincipal li a {
+    display: block;
+    padding: 10px 15px;
+    color: #353535;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+}
+
+.menuPrincipal li a:hover {
+    color: #CE7D35;
+    transition: all .3s;
+}
+
+.subMenuPrincipal {
+    position: absolute;
+    background: blanchedalmond;
+    width: 150%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1.5s;
+    z-index: 10;
+}
+
+/* .subMenuPrincipal li {
+    display: block;
+    padding: 5px;
+    color: #353535;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+} */
+
+.menuPrincipal li:hover .subMenuPrincipal {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Formato para botón NavBar */
+.botones {
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    border-color: transparent;
+    color: #fff;
+    background-image: linear-gradient(to right, blanchedalmond, #CE7D35);
+}
+
+.botones:hover {
+    transform: translateY(-3px);
+    transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s;
+    /* Cubic-bezier = Es la curva de tiempo que usan todas las transiciones CSS */ 
+}
+
+.botones:active {
+    transform: translateY(3px); 
+}

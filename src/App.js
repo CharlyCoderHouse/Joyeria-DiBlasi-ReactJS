@@ -1,21 +1,23 @@
 import "./App.css";
-import NavBar from "./components/navBar.js";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import NavBar from "./components/NavBar/navBar.js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
+import ItemListContainer from "./pages/ItemListContainer/ItemListContainer";
 
 function App() {
   
   return (
-    <div className="App">
+    <BrowserRouter>
       <NavBar />
-      <header className="App-header">
-        <ItemDetailContainer Saludo="(Detalle) - Bienvenidos a la Tienda Virtual" />
-        <ItemListContainer Saludo="(Lista) - Bienvenidos a la Tienda Virtual" />
-        <p className='texto'>
-          Presentación Trabajo Clase 7
-        </p>
-      </header>
-    </div>
+      <Routes>
+        <Route path="/" element={<ItemListContainer Saludo="Bienvenidos a la Tienda Virtual" />} />
+        <Route path="/quienesSomos" element={<div> Quienes Somos </div>} />
+        <Route path="/detalle/:idProd" element={<ItemDetailContainer Saludo="Conoce más del " />} />
+        <Route path="/categoria/:categoriaNombre" element={<ItemListContainer Saludo="Sección " />} />
+        <Route path="/contacto" element={<div> Contacto </div>} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
