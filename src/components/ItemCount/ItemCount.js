@@ -1,19 +1,13 @@
-import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-  const [initialItem, setInitialItem] = useState(initial);
+const ItemCount = ({ stock, initial, onAdd, setInitialItem, initialItem }) => {
 
   const sumar = () => {
-        initialItem < stock
-            ? setInitialItem(initialItem + 1) 
-            : alert('Se alcanzo el máximo de stock del producto');
+        setInitialItem(initialItem + 1);
     };
 
     const restar = () => {
-        initialItem > 0 
-            ? setInitialItem(initialItem - 1) 
-            : alert('No se pueden introducir valores negativos');
+        setInitialItem(initialItem - 1);
     };
 
     const handleOnAdd = () => {
@@ -22,14 +16,14 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
   return (
     <div className="spinner">
-      <Button className='btn-warning' onClick={restar}>
+      <Button className='btn-warning' onClick={restar} disabled={initialItem < 1}>
         -
       </Button>
       <div className="textoTilt"> {initialItem} </div>
-      <Button className='btn-warning' onClick={sumar}>
+      <Button className='btn-warning' onClick={sumar} disabled={initialItem>=stock}>
         +
       </Button>
-      <Button className='btn-warning' onClick={handleOnAdd}>Agregar al Carrito</Button>
+      <Button className='btn-warning' onClick={handleOnAdd} disabled={initialItem < 1} >Agregar al Carrito</Button>
     </div>
   );
 };

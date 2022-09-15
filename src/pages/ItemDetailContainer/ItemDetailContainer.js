@@ -32,14 +32,15 @@ const ItemDetailContainer = ({ Saludo }) => {
       ) : (
         <>
           <div className="App-header">
-            <h1 className="texto">{Saludo + data.nombre}</h1>
-            <Link 
-              key={data.id}
-              to={'/categoria/' + data.categoria}
-                    style={{ textDecoration:'none',
-                             color: "black"  }}>
-              <button className="botones"> Volver </button>
-            </Link>
+            <div className="tituloEnca">
+              <h1 className="texto">{Saludo + data.nombre}</h1>
+              <Link 
+                key={data.id}
+                to={'/categoria/' + data.categoria}
+                      style={{ textDecoration:'none'}}>
+                <button className="botones1"> Volver </button>
+              </Link>
+            </div>  
             <div className='card1'>
               <ItemDetail data={data} />
             </div>  

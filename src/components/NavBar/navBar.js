@@ -25,35 +25,35 @@ const NavBar = () => {
                     </Link>    
                 </li>                              
                 <li>
-                   <Link>
-                        Productos
-                        <ul className="subMenuPrincipal">
-                            <li>
-                                <Link
-                                    to={'/categoria/Anillos'} >
-                                    Anillos
-                                </Link>    
-                            </li>
-                            <li>
-                                <Link
-                                    to={'/categoria/Relojes'} >
-                                    Relojes
-                                </Link>    
-                            </li>
-                            <li>
-                                <Link
-                                    to={'/categoria/Accesorios'} >
-                                    Accesorios
-                                </Link>    
-                            </li>
-                            <li>
-                                <Link
-                                    to={'/categoria/Marroquineria'} >
-                                    Marroquinería
-                                </Link>    
-                            </li>                                                                                    
-                        </ul>
-                    </Link>    
+                    <Link>
+                       Productos
+                    </Link>  
+                    <ul className="subMenuPrincipal">
+                        <li>
+                            <Link
+                                to={'/categoria/Anillos'} >
+                                Anillos
+                            </Link>    
+                        </li>
+                        <li>
+                            <Link
+                                to={'/categoria/Relojes'} >
+                                Relojes
+                            </Link>    
+                        </li>
+                        <li>
+                            <Link
+                                to={'/categoria/Accesorios'} >
+                                Accesorios
+                            </Link>    
+                        </li>
+                        <li>
+                            <Link
+                                to={'/categoria/Marroquineria'} >
+                                Marroquinería
+                            </Link>    
+                        </li>                                                                                    
+                    </ul>
                 </li>
                 <li>
                    <Link
