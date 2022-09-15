@@ -1,7 +1,9 @@
 
-const CartWidget = () => {
+const CartWidget = (props) => {
   return (
-        <i className="fa-solid fa-cart-shopping carrito"></i>
+    <>
+      <i className="fa-solid fa-cart-shopping carrito"></i> Carrito: {props.items}
+    </>
     )
 }
 
