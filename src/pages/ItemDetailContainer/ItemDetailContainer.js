@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { Link } from 'react-router-dom'
 
-const ItemDetailContainer = ({ Saludo, setItems }) => {
+const ItemDetailContainer = ({ Saludo }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { idProd } = useParams();
@@ -42,7 +42,7 @@ const ItemDetailContainer = ({ Saludo, setItems }) => {
               </Link>
             </div>  
             <div className='card1'>
-              <ItemDetail data={data} setItems={setItems}/>
+              <ItemDetail data={data} />
             </div>  
           </div> 
         </>  

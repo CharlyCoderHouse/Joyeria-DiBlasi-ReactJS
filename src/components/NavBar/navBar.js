@@ -3,7 +3,7 @@ import Logo_Puga from '../../img/Logo_Puga.png';
 import CartWidget from '../CartWidget/CartWidget';
 import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = () => {
     return (
         <div className="menuNav">
             <h1 className='titulos'>Proyecto Tienda Joyería PUGA</h1>
@@ -67,7 +67,7 @@ const NavBar = (props) => {
                 <li className="nav-item">
                     <Link
                         to={'/cart'} >
-                        <button className="botones"><CartWidget items={props.items}/> </button> 
+                        <button className="botones"><CartWidget /> </button> 
                     </Link>
                 </li>  
             </ul>

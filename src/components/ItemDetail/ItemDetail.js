@@ -1,22 +1,26 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ItemCount from "../ItemCount/ItemCount";
+import { CartContext } from "../../Context/CartContext";
 
-const ItemDetail = ({ data, setItems }) => { 
+const ItemDetail = ({ data }) => { 
 
+    const { addToCart, removeItem } = useContext(CartContext);
     const [initialItem, setInitialItem] = useState(1);
     const [compraOn, setCompraOn] = useState(false);
-
+    
     const handleOnAdd = (cantidad)=>{
-        alert(`Se agrego ${cantidad} producto al carrito`);
-        setCompraOn(true);
-        setItems(cantidad);
+        setCompraOn(addToCart(data, cantidad));
     };
 
     const handleClik = (cantidad)=>{
         console.log(cantidad);
+    };
+
+    const handleBorrar = ()=>{
+        removeItem(data.id);
     };
 
     return (
@@ -35,6 +39,8 @@ const ItemDetail = ({ data, setItems }) => {
                         <Button className='btn-warning' onClick={handleClik}>Terminar Comprar</Button>        
                     </Link>  
                 }
+                {/* Este boton de borrar es solo para probar la función de borrado después se elimina */}
+                <Button className='btn-warning' onClick={handleBorrar}>Borrar</Button>  
             </Card.Body>
         </Card>
     );
