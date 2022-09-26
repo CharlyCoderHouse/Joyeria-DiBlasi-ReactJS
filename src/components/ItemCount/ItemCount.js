@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-const ItemCount = ({ stock, initial, onAdd, setInitialItem, initialItem }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
+
+  const [initialItem, setInitialItem] = useState(initial);
 
   const sumar = () => {
         setInitialItem(initialItem + 1);

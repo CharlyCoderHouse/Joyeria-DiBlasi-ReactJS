@@ -44,8 +44,15 @@ export const CartProvider = ({children}) => {
         setCart(productBorrar);
     };
 
+    // Consulto la cantidad del producto en el carrito
+    const getCantidad = (id) => {
+        const productCant = cart.find((enCarrito) => enCarrito.id === id);
+    
+        return productCant ? productCant.quantity : 0;
+      };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, clear, removeItem }}>
+    <CartContext.Provider value={{ cart, addToCart, clear, removeItem, getCantidad }}>
         {children}
     </CartContext.Provider>
   )
