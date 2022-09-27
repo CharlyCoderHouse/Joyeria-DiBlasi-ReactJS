@@ -4,11 +4,10 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
 import ItemListContainer from "./pages/ItemListContainer/ItemListContainer";
-import { CartProvider } from "./Context/CartContext";
+import { CartProvider } from "./Context/CartProvider";
+import Cart from "./components/Cart/Cart";
 
 function App() {
-  
- /*  const [items, setItems] = useState(0); */
 
   return (
      <CartProvider> 
@@ -20,7 +19,7 @@ function App() {
           <Route path="/detalle/:idProd" element={<ItemDetailContainer Saludo="Conoce más del " />} />
           <Route path="/categoria/:categoriaNombre" element={<ItemListContainer Saludo="Sección " />} />
           <Route path="/contacto" element={<div> Contacto </div>} />
-          <Route path="/cart" element={<div> Carrito </div>} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
      </CartProvider> 

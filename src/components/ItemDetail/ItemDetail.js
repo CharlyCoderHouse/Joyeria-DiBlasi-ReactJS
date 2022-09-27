@@ -7,7 +7,8 @@ import { CartContext } from "../../Context/CartContext";
 
 const ItemDetail = ({ data }) => { 
 
-    const { addToCart, removeItem, getCantidad } = useContext(CartContext);  
+    const { addToCart, removeItem } = useContext(CartContext);  
+    const [initialItem, setInitialItem] = useState(1);
     const [compraOn, setCompraOn] = useState(false);
     
     const handleOnAdd = (cantidad)=>{
@@ -31,7 +32,7 @@ const ItemDetail = ({ data }) => {
                 <Card.Text className='textoDesc'>{`Stock disponible ${data.stock}`}</Card.Text>
                 <Card.Img variant="top" src={`${data.img}`} alt={`${data.alt}`}  />
                 {compraOn===false ?
-                    <ItemCount stock={data.stock} initial={getCantidad(data.id)} onAdd={handleOnAdd}/>
+                    <ItemCount stock={data.stock} onAdd={handleOnAdd} initialItem={initialItem} setInitialItem={setInitialItem} />
                     :    
                     <Link
                         to={'/cart'} >
