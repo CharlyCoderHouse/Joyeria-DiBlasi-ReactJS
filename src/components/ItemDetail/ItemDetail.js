@@ -5,22 +5,19 @@ import Button from "react-bootstrap/Button";
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../Context/CartContext";
 
+
 const ItemDetail = ({ data }) => { 
 
-    const { addToCart, removeItem } = useContext(CartContext);  
+    const { addToCart } = useContext(CartContext);  
     const [initialItem, setInitialItem] = useState(1);
     const [compraOn, setCompraOn] = useState(false);
-    
+
     const handleOnAdd = (cantidad)=>{
         setCompraOn(addToCart(data, cantidad));
     };
 
     const handleClik = (cantidad)=>{
         console.log(cantidad);
-    };
-
-    const handleBorrar = ()=>{
-        removeItem(data.id);
     };
 
     return (
@@ -39,8 +36,6 @@ const ItemDetail = ({ data }) => {
                         <Button className='btn-warning' onClick={handleClik}>Terminar Comprar</Button>        
                     </Link>  
                 }
-                {/* Este boton de borrar es solo para probar la función de borrado después se elimina */}
-                <Button className='btn-warning' onClick={handleBorrar}>Borrar</Button>  
             </Card.Body>
         </Card>
     );

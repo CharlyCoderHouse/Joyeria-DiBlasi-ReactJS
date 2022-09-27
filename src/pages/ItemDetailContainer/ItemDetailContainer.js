@@ -1,24 +1,28 @@
 import logo from "../../logo.svg";
-import getData from "../../components/Data/mockData";
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { Link } from 'react-router-dom'
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = ({ Saludo }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { idProd } = useParams();
-  
+
   useEffect(() => {
-      getData
-      .then((response) => { 
-          const prodFiltro = response.find((el) => el.id === idProd);
-          setData(prodFiltro);
+    const db = getFirestore();
+    const queryDoc = doc(db, 'items', idProd);
+    const getData  = async () => {
+      await getDoc(queryDoc)
+      .then((res) => {
+        setData({id: res.id, ...res.data()});
       })
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-    },[idProd])
+      .catch(err => console.log(err))
+      .finally(()=>setLoading(false))
+    }
+    getData();
+  },[idProd])
 
   return (
     <>
