@@ -39,8 +39,7 @@ export const CartProvider = ({children}) => {
 
     //Borro un item del carrito
     const removeItem = (itemId) => {
-        const productBorrar = cart.filter(enCarrito => enCarrito.id !== itemId);
-        setCart(productBorrar);
+        setCart(cart.filter(enCarrito => enCarrito.id !== itemId));
     };
 
     // Consulto la cantidad del producto en el carrito

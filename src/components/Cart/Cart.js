@@ -3,11 +3,54 @@ import React, { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { getFirestore, collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import moment from "moment";
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-    const { cart, removeItem } = useContext(CartContext);
+    const navigate = useNavigate();
+    const { cart, clear, removeItem } = useContext(CartContext);
     const totalCart = cart.reduce((acumulador, items) => acumulador + (items.quantity*items.precio), 0);
     
+    const db = getFirestore();
+
+    const createOrder = () => { 
+        const order = {
+            buyer: {
+                name: 'Juan',
+                phone: '2235534546',
+                email: 'juan@gmail.com'
+            },
+            items: cart,
+            date: moment().format('DD/MM/YYYY, h:mm:ss a'),
+            total: totalCart,
+        };
+        const query = collection(db, 'orders');
+        addDoc(query, order)
+        .then(({ id }) => {
+            updateStockItems();
+            console.log(id);
+            alert('Felicidades por tu compra');
+        })
+        .catch(() => alert('No se pudo realizar la compra, intenta más tarde'));
+    };
+
+    const updateStockItems = () => {
+        cart.forEach((element) => {
+            const queryUpdate = doc(db, 'items', element.id );
+            updateDoc(queryUpdate, {
+                stock: element.stock - element.quantity,})
+            .then(() => {
+                if (cart[cart.length -1].id === element.id) {
+                    clear();
+                    navigate('/');
+                }
+                console.log('Stock Actualizado');
+            })
+            .catch(() => {console.log('Error al Actualizar el Stock');})
+            });
+    }; 
+
     return (
         <div>
             <div className='encabezado'>
@@ -42,12 +85,12 @@ const Cart = () => {
                             <p>{item.quantity} unid.</p>
                             <p>$ {item.precio}.-</p>
                             <p>$ {item.precio*item.quantity}.-</p>
-                            {/* <button onClick={() => removeItem(item.id)}>Eliminar</button> */}
                             <button className='boton-eliminar' onClick={() => removeItem(item.id)}><i className="fa-solid fa-trash-can"></i></button>
 
                         </div>
                     ))}
                     </div>
+                    <Button className='btn-warning' onClick={createOrder}>Crear Orden de Compra</Button>     
                 </>
             )
             }

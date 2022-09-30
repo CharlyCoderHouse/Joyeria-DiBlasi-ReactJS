@@ -15,49 +15,23 @@ const ItemListContainer = ({ Saludo }) => {
     useEffect(() => {
       const getData = () => {
         const db = getFirestore();
-        const querySnapshot = collection(db, 'items');
+        const queryBase = collection(db, 'items');
+        const querySnapshot = categoriaNombre ? query(queryBase, where('categoria', '==', categoriaNombre)) : queryBase;
         
-        if(categoriaNombre){
-          const queryFiltered = query(querySnapshot, where('categoria', '==', categoriaNombre));
-          getDocs(queryFiltered)
-          .then(response => {
-            const data = response.docs.map((doc) => {
-              return { id: doc.id, ...doc.data()};
-            });
-            setData(data);
-          })
-          .catch(error=>console.log(error))
-          .finally(()=>setLoading(false))
-
-        } else {
-          getDocs(querySnapshot)
-          .then(response => {
-            const data = response.docs.map((doc) => {
-              return { id: doc.id, ...doc.data()};
-            });
-            setData(data);  
-          })
-          .catch(error=>console.log(error))
-          .finally(()=>setLoading(false))
-        }
-      }
+        getDocs(querySnapshot)
+        .then(response => {
+          const data = response.docs.map((doc) => {
+            return { id: doc.id, ...doc.data()};
+          });
+          setData(data);  
+        })
+        .catch(error=>console.log(error))
+        .finally(()=>setLoading(false))
+      };
       getData();
     }, [categoriaNombre]);
 
-/*     useEffect(() => {
-        getData
-        .then((response) => {
-          if (categoriaNombre){
-            const dataCategoria = response.filter((item) => item.categoria === categoriaNombre);
-            setData(dataCategoria);
-          }else{
-            setData(response);
-          }
-         })
-        .catch((error) => console.log(error))
-        .finally(() => setLoading(false));
-      }, [categoriaNombre]);
- */
+
   return (
   <>
     {loading ? (
