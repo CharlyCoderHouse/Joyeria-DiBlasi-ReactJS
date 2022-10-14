@@ -6,6 +6,7 @@ import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer
 import ItemListContainer from "./pages/ItemListContainer/ItemListContainer";
 import { CartProvider } from "./Context/CartProvider";
 import Cart from "./components/Cart/Cart";
+//import FormRegister from "./components/AdmUser/Register";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/categoria/:categoriaNombre" element={<ItemListContainer Saludo="Sección " />} />
           <Route path="/contacto" element={<div> Contacto </div>} />
           <Route path="/cart" element={<Cart />} />
+          {/* <Route path="/registro" element={<FormRegister />} /> */}
         </Routes>
       </BrowserRouter>
      </CartProvider> 

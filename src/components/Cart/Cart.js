@@ -1,5 +1,5 @@
 import "./Cart.css";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -52,7 +52,7 @@ const Cart = () => {
     }; 
 
     return (
-        <div>
+        <div className="carrito">
             <div className='encabezado'>
                 <h1>Su carrito de compras</h1>
                 <Link

@@ -10,7 +10,11 @@
     text-align: center;
     width: auto;
     margin: 30px auto;
-    /* background: blanchedalmond; */
+}
+
+.textUser {
+    text-align: right;
+    padding: 10px;
 }
 
 ul {
@@ -58,14 +62,6 @@ li {
     transition: opacity 1.5s;
     z-index: 10;
 }
-
-/* .subMenuPrincipal li {
-    display: block;
-    padding: 5px;
-    color: #353535;
-    font-family: 'Roboto', sans-serif;
-    text-decoration: none;
-} */
 
 .menuPrincipal li:hover .subMenuPrincipal {
     display: block;
