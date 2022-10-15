@@ -1,51 +1,77 @@
 import "./Cart.css";
-import { useContext } from "react";
+import logo from "../../logo.svg";
+import { useState, useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getFirestore, collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import moment from "moment";
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import 'animate.css';
 
 const Cart = () => {
     const navigate = useNavigate();
-    const { cart, clear, removeItem } = useContext(CartContext);
+    const [orderLista, setOrderLista] = useState(false);
+    const { cart, removeItem, dataUser } = useContext(CartContext);
     const totalCart = cart.reduce((acumulador, items) => acumulador + (items.quantity*items.precio), 0);
-    
     const db = getFirestore();
 
     const createOrder = () => { 
         const order = {
             buyer: {
-                name: 'Juan',
-                phone: '2235534546',
-                email: 'juan@gmail.com'
+                uid: dataUser.id, 
+                name: dataUser.nombre,
+                phone: dataUser.phone,
+                email: dataUser.email
             },
             items: cart,
             date: moment().format('DD/MM/YYYY, h:mm:ss a'),
             total: totalCart,
         };
+        setOrderLista(true);
         const query = collection(db, 'orders');
         addDoc(query, order)
         .then(({ id }) => {
-            updateStockItems();
+            updateStockItems(id);
             console.log(id);
-            alert('Felicidades por tu compra');
         })
-        .catch(() => alert('No se pudo realizar la compra, intenta más tarde'));
+        .catch(() => {
+            Swal.fire({
+                icon: "error",
+                title: "Lo sentimos, No se pudo realizar la compra, intenta más tarde",
+                showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+                }
+              });
+           })
+        .finally(()=>{
+            setOrderLista(false);
+        });
     };
 
-    const updateStockItems = () => {
+    const updateStockItems = (orderId) => {
         cart.forEach((element) => {
             const queryUpdate = doc(db, 'items', element.id );
             updateDoc(queryUpdate, {
                 stock: element.stock - element.quantity,})
             .then(() => {
                 if (cart[cart.length -1].id === element.id) {
-                    clear();
-                    navigate('/');
+                    navigate(`order/${orderId}`, { replace: true });
                 }
-                console.log('Stock Actualizado');
+                Swal.fire({
+                    title: 'Muchas gracias por su compra ! su orden esta en progreso',
+                    icon: "success",
+                    showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
             })
             .catch(() => {console.log('Error al Actualizar el Stock');})
             });
@@ -55,10 +81,7 @@ const Cart = () => {
         <div className="carrito">
             <div className='encabezado'>
                 <h1>Su carrito de compras</h1>
-                <Link
-                    to={'/'} >
-                    <Button className='btn-warning'>Volver</Button>        
-                </Link>
+
             </div>
             { cart.length===0 ? (
                 <>
@@ -94,6 +117,21 @@ const Cart = () => {
                 </>
             )
             }
+            {
+                <>
+                    <Modal show={orderLista} size="sm">
+    
+                        <Modal.Body>
+                            <img src={logo} className="App-logo" alt="logo" style={{ width: '7rem' }}/>
+                            <span>Estamos procesando tu Orden</span>
+                        </Modal.Body>
+                    </Modal>
+                </>
+            }
+            <Link
+                to={'/'} >
+                <Button className='btn-warning'>Volver</Button>        
+            </Link>
         </div>
     )
 }

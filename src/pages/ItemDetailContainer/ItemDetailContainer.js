@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { Link } from 'react-router-dom'
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import Swal from 'sweetalert2';
+import 'animate.css';
 
 const ItemDetailContainer = ({ Saludo }) => {
   const [data, setData] = useState([]);
@@ -18,7 +20,19 @@ const ItemDetailContainer = ({ Saludo }) => {
       .then((res) => {
         setData({id: res.id, ...res.data()});
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        Swal.fire({
+          icon: "error",
+          title: "Lo sentimos, el servicio no se encuentra disponible",
+          showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+          }
+        });
+      })
       .finally(()=>setLoading(false))
     }
     getData();

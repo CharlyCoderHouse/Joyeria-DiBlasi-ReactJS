@@ -15,8 +15,7 @@ const FormLogin = ({setShowForm, setShowFormReg} ) => {
     password:'',
   });
   const [show, setShow] = useState(false);
-   const navigate = useNavigate();
-  
+  const navigate = useNavigate();
 
   const handleChange = ({target: {name, value}}) => {
     setUser({...user, [name]: value});
@@ -24,7 +23,6 @@ const FormLogin = ({setShowForm, setShowFormReg} ) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //setError("");
     try {
       await login(user.email, user.password);
       Swal.fire({
@@ -40,8 +38,7 @@ const FormLogin = ({setShowForm, setShowFormReg} ) => {
         setShowForm(false);
         setShow(false);
         navigate("/");
-    } catch (error) {
-        //setError(error.message);
+    } catch (error) { 
         const errorCode = error.code;
         console.log(errorCode);
         var errorMessage = "";

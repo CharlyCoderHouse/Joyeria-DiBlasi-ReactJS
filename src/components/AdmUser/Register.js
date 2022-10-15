@@ -3,8 +3,8 @@ import { useState, useEffect, useContext } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { CartContext } from '../../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import Swal from 'sweetalert2';
 import 'animate.css';
 
 // ES UN MODAL PARA PEDIR LOS DATOS DE ENVIO

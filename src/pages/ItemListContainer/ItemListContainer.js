@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import ItemList from "../../components/ItemList/ItemList";
 import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
+import Swal from 'sweetalert2';
+import 'animate.css';
 
 const ItemListContainer = ({ Saludo }) => {
     const[data, setData] = useState([])
@@ -25,7 +27,19 @@ const ItemListContainer = ({ Saludo }) => {
           });
           setData(data);  
         })
-        .catch(error=>console.log(error))
+        .catch(error=>{
+          console.log(error)
+          Swal.fire({
+            icon: "error",
+            title: "Lo sentimos, el servicio no se encuentra disponible",
+            showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+        })
         .finally(()=>setLoading(false))
       };
       getData();
