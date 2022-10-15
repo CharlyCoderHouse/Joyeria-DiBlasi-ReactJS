@@ -107,12 +107,6 @@ const NavBar = () => {
                                 </li>                                                                                    
                             </ul>
                         </li>
-                        <li>
-                        <Link
-                            to={'/contacto'} >
-                            Contactanos
-                            </Link>    
-                        </li>
                         <li className="nav-item">
                             {user !== null ?
                                 <Button className='btn-warning' onClick={handleLogout}>Cerrar Sesión <i className="fa-solid fa-arrow-right-from-bracket"></i></Button>

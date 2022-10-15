@@ -58,7 +58,7 @@ const ItemListContainer = ({ Saludo }) => {
     ) : (
       <>
         <div className="App-header">
-          <h1 className="texto">{Saludo + saludoCat}</h1>
+          <h1 className="titulo">{Saludo + saludoCat}</h1>
           <div className='card1'>
             <ItemList products={data} categoria={categoriaNombre} />
           </div>  

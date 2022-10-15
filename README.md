@@ -11,3 +11,4 @@ Es un Ecommerce de la Joyería PUGA de la ciudad de Azul, Provincia de Buenos Ai
 - [FireBase](https://firebase.google.com/)
 - [SweetAlert2](https://sweetalert2.github.io/)
 - [Animate.css](https://animate.style/)
+- [React-Player](https://www.npmjs.com/package/react-player)

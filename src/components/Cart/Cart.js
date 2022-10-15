@@ -122,8 +122,11 @@ const Cart = () => {
                     <Modal show={orderLista} size="sm">
     
                         <Modal.Body>
-                            <img src={logo} className="App-logo" alt="logo" style={{ width: '7rem' }}/>
-                            <span>Estamos procesando tu Orden</span>
+                            <div className="App-header">
+                                <img src={logo} className="App-logo" alt="logo" style={{ width: '7rem' }}/>
+                                <br></br>
+                                <span>Estamos procesando tu Orden</span>
+                            </div>
                         </Modal.Body>
                     </Modal>
                 </>

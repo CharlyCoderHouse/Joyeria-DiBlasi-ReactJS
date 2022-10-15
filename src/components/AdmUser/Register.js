@@ -7,7 +7,7 @@ import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import 'animate.css';
 
-// ES UN MODAL PARA PEDIR LOS DATOS DE ENVIO
+// ES UN MODAL PARA PEDIR LOS DATOS DE REGISTRO
 
 const FormRegister = ({setShowFormReg}) => {
   const dbUser = getFirestore();  
